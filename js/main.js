@@ -11,15 +11,15 @@ let phoneComb = {
   },
 
   mobileWords(numbersArr) {
-    // Checking that the input corresponds to the existing numbers:
+    // Check that the input numbers are valid:
     const wrongNum = [];
     for (let numbers of numbersArr) {
       if (!this.phone.hasOwnProperty(numbers)) {
-        // Numbers that do not correspond to the existing keys get pushed in wrongNum array and listed to user on line 25:
+        // Invalid numbers pushed to wrongNum array and listed to user on line 25:
         wrongNum.push(numbers);
       }
     }
-    // If the wrongNum array is not empty, users get informed on line 25 that they need to change the numbers:
+    //Error message with invalid numbers, if wrongNum array is not empty:
     if (wrongNum.length > 0) {
       document.getElementById(
         "words"
@@ -38,7 +38,7 @@ let phoneComb = {
             // console.log(this.phone[el].toUpperCase().split(""));
             return this.phone[el].toUpperCase().split("");
           })
-          // Combine the elements from the previously returned arrays(line 39) in line 46 :
+          // Combine the elements from returned arrays(line 39) in line 46 :
           .reduce((a, b) => {
             let output = [];
             for (var i = 0; i < a.length; i++) {
@@ -54,6 +54,7 @@ let phoneComb = {
   }
 };
 
+//TESTS:
 // input 1:
 let numbersArr = [2, 3, 5];
 // output 1:
