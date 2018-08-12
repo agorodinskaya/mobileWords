@@ -44,7 +44,7 @@ let phoneComb = {
                 output.push(a[i] + b[j]);
               }
             }
-            document.getElementById("words").innerHTML = output;
+            // document.getElementById("words").innerHTML = output;
             return output;
           })
       );
