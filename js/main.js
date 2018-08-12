@@ -25,24 +25,22 @@ let phoneComb = {
         `${wrongNum} is not part of the list of numbers. Please enter the correct numbers, which should be between 2-9`
       );
     } else {
-      return (
-        numbersArr
-          //Return the corresponding arrays of letters to the numbers selected by user in the numbersArr(line 54):
-          .map(el => {
-            // console.log(this.phone[el].toUpperCase().split(""));
-            return this.phone[el].toUpperCase().split("");
-          })
-          // Combine the elements from returned arrays(from line 39), result in line 46 :
-          .reduce((a, b) => {
-            const output = [];
-            for (let i = 0; i < a.length; i++) {
-              for (let j = 0; j < b.length; j++) {
-                output.push(a[i] + b[j]);
-              }
+      let result = numbersArr
+        //Return the corresponding arrays of letters to the numbers selected by user in the numbersArr:
+        .map(el => {
+          return this.phone[el].toUpperCase().split("");
+        })
+        // Combine the elements from returned arrays(from line 31), output in line 41 :
+        .reduce((a, b) => {
+          const output = [];
+          for (let i = 0; i < a.length; i++) {
+            for (let j = 0; j < b.length; j++) {
+              output.push(a[i] + b[j]);
             }
-            return output;
-          })
-      );
+          }
+          return output;
+        });
+      console.log(result);
     }
   }
 };
@@ -65,4 +63,4 @@ let numbersArr = [2, 3, 5];
 // Please enter the correct numbers, which should be between 2-9
 
 // call the function to get the result:
-console.log(phoneComb.mobileWords(numbersArr));
+phoneComb.mobileWords(numbersArr);
