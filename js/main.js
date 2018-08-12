@@ -24,11 +24,11 @@ let phoneComb = {
       document.getElementById(
         "words"
       ).innerHTML = `${wrongNum} is not part of the list of numbers.
-      Please key in the correct numbers, which are from 2-9`;
+      Please key in the correct numbers, which are between 2-9`;
 
       console.log(
         `${wrongNum} is not part of the list of numbers.
-        Please key in the correct numbers, which are from 2-9`
+        Please key in the correct numbers, which are between 2-9`
       );
     } else {
       return (
@@ -56,7 +56,7 @@ let phoneComb = {
 
 //TESTS:
 // input 1:
-let numbersArr = [2, 3, 5];
+// let numbersArr = [2, 3, 5];
 // output 1:
 //["ADJ", "ADK", "ADL", "AEJ", "AEK", "AEL", "AFJ", "AFK", "AFL", "BDJ", "BDK", "BDL", "BEJ", "BEK", "BEL", "BFJ", "BFK", "BFL", "CDJ", "CDK", "CDL", "CEJ", "CEK", "CEL", "CFJ", "CFK", "CFL"]
 
@@ -66,10 +66,10 @@ let numbersArr = [2, 3, 5];
 //["AJ", "AK", "AL", "BJ", "BK", "BL", "CJ", "CK", "CL"]
 
 // input 3:
-// let numbersArr = [25, 5, 6, 7, 9];
+let numbersArr = [25, 5, 6, 7, 9];
 // output 3:
 //25 is not part of the list of numbers.
-// Please key in the correct numbers, which are from 2-9
+// Please key in the correct numbers, which are between 2-9
 
 // call the function to get the result:
 console.log(phoneComb.mobileWords(numbersArr));
