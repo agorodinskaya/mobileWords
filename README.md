@@ -10,7 +10,7 @@ would print out:
 
 AJ, AK, AL, BJ, BK, BL, CJ, CK, CL
 
-_Languages used to solve the problem : _
+_Languages used to solve the problem :_
 JavaScript
 
 _Please follow the link to see the output in browser and console :_
