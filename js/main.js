@@ -34,7 +34,7 @@ let phoneComb = {
           })
           // Combine the elements from returned arrays(from line 39), result in line 46 :
           .reduce((a, b) => {
-            let output = [];
+            const output = [];
             for (let i = 0; i < a.length; i++) {
               for (let j = 0; j < b.length; j++) {
                 output.push(a[i] + b[j]);
