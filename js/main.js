@@ -10,9 +10,9 @@ let phoneComb = {
     9: "wxyz"
   },
 
-  mobileWords: function(numbersArr) {
+  mobileWords(numbersArr) {
     // Checking that the input corresponds to the existing numbers:
-    let wrongNum = [];
+    const wrongNum = [];
     for (let numbers of numbersArr) {
       if (!this.phone.hasOwnProperty(numbers)) {
         // Numbers that do not correspond to the existing keys get pushed in wrongNum array and listed to user on line 25:
@@ -23,62 +23,45 @@ let phoneComb = {
     if (wrongNum.length > 0) {
       document.getElementById(
         "words"
-      ).innerHTML = `The following number/s do not correspond the requirement: ${wrongNum}. Please key in the correct numbers, which are from 2-9`;
+      ).innerHTML = `${wrongNum} is not part of the list of numbers.
+      Please key in the correct numbers, which are from 2-9`;
 
       console.log(
-        `The following number/s do not correspond the requirement: ${wrongNum}. Please key in the correct numbers, which are from 2-9`
+        `${wrongNum} is not part of the list of numbers.
+        Please key in the correct numbers, which are from 2-9`
       );
     } else {
-      // else (or wrongNum array is empty), numbers get used to output the words using function on line 32:
-
-      return this.wordsToOutput(numbersArr);
+      return numbersArr
+        .map(el => {
+          // console.log(this.phone[el].toUpperCase().split(""));
+          return this.phone[el].toUpperCase().split("");
+        })
+        .reduce((a, b) => {
+          let output = [];
+          for (var i = 0; i < a.length; i++)
+            for (var j = 0; j < b.length; j++) output.push(a[i] + b[j]);
+          document.getElementById("words").innerHTML = output;
+          return output;
+        });
     }
-  },
-  wordsToOutput: function(numbersArr) {
-    // first array of letters to append the rest of letters to :
-    let firstNumArr = this.phone[numbersArr[0]].toUpperCase().split("");
-    // change the input array of numbers by excluding the first element in order to combine all the remaining elements and obtain the letters to append to first array :
-    let newNumbersArr = numbersArr.slice(1);
-    // empty array that will be filled with remaining letters to be appended to the first array(line 34)
-    let lastNumArr = [];
-    // result that will be logged in console:
-    let output = [];
-
-    // Combine the remaining letters that will be appended to first array in line 54:
-    for (let i = 0; i < newNumbersArr.length; i++) {
-      lastNumArr.push(this.phone[newNumbersArr[i]].toUpperCase().split(""));
-    }
-    // flatten lastNumArr from line 45 and use in line 58 & 59:
-    let flatLastNumArr = lastNumArr.reduce(
-      (flat, curr) => flat.concat(curr),
-      []
-    );
-    // loop through the first array of letters and append the letters from array from line 53:
-    for (let i = 0; i < firstNumArr.length; i++) {
-      for (let j = 0; j < flatLastNumArr.length; j++) {
-        output.push(firstNumArr[i] + flatLastNumArr[j]);
-      }
-    }
-    //output the result in the browser and console:
-    document.getElementById("words").innerHTML = output;
-    console.log(output);
   }
 };
 
 // input 1:
-let numbersArr = [2, 5, 6, 7, 9];
+let numbersArr = [2, 3, 5];
 // output 1:
-//["AJ", "AK", "AL", "AM", "AN", "AO", "AP", "AQ", "AR", "AS", "AW", "AX", "AY", "AZ", "BJ", "BK", "BL", "BM", "BN", "BO", "BP", "BQ", "BR", "BS", "BW", "BX", "BY", "BZ", "CJ", "CK", "CL", "CM", "CN", "CO", "CP", "CQ", "CR", "CS", "CW", "CX", "CY", "CZ"]
+//["ADJ", "ADK", "ADL", "AEJ", "AEK", "AEL", "AFJ", "AFK", "AFL", "BDJ", "BDK", "BDL", "BEJ", "BEK", "BEL", "BFJ", "BFK", "BFL", "CDJ", "CDK", "CDL", "CEJ", "CEK", "CEL", "CFJ", "CFK", "CFL"]
 
 // input 2:
-// let numbersArr = [2, 2];
+// let numbersArr = [2, 5];
 // output 2:
-//["AA", "AB", "AC", "BA", "BB", "BC", "CA", "CB", "CC"]
+//["AJ", "AK", "AL", "BJ", "BK", "BL", "CJ", "CK", "CL"]
 
 // input 3:
 // let numbersArr = [25, 5, 6, 7, 9];
 // output 3:
-//The following number/s do not correspond the requirement: 25. Please key in the correct numbers, which are from 2-9
+//25 is not part of the list of numbers.
+// Please key in the correct numbers, which are from 2-9
 
 // call the function to get the result:
-phoneComb.mobileWords(numbersArr);
+console.log(phoneComb.mobileWords(numbersArr));
