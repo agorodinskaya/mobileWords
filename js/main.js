@@ -21,10 +21,6 @@ let phoneComb = {
     }
     //Error message with invalid numbers, if wrongNum array is not empty:
     if (wrongNum.length > 0) {
-      document.getElementById(
-        "words"
-      ).innerHTML = `${wrongNum} is not part of the list of numbers. Please enter the correct numbers, which should be between 2-9`;
-
       console.log(
         `${wrongNum} is not part of the list of numbers. Please enter the correct numbers, which should be between 2-9`
       );
@@ -39,12 +35,11 @@ let phoneComb = {
           // Combine the elements from returned arrays(line 39) in line 46 :
           .reduce((a, b) => {
             let output = [];
-            for (var i = 0; i < a.length; i++) {
-              for (var j = 0; j < b.length; j++) {
+            for (let i = 0; i < a.length; i++) {
+              for (let j = 0; j < b.length; j++) {
                 output.push(a[i] + b[j]);
               }
             }
-            document.getElementById("words").innerHTML = output;
             return output;
           })
       );
