@@ -31,18 +31,25 @@ let phoneComb = {
         Please key in the correct numbers, which are from 2-9`
       );
     } else {
-      return numbersArr
-        .map(el => {
-          // console.log(this.phone[el].toUpperCase().split(""));
-          return this.phone[el].toUpperCase().split("");
-        })
-        .reduce((a, b) => {
-          let output = [];
-          for (var i = 0; i < a.length; i++)
-            for (var j = 0; j < b.length; j++) output.push(a[i] + b[j]);
-          document.getElementById("words").innerHTML = output;
-          return output;
-        });
+      return (
+        numbersArr
+          //Return the corresponding arrays of letters to the numbers selected by user in the numbersArr(line 54):
+          .map(el => {
+            // console.log(this.phone[el].toUpperCase().split(""));
+            return this.phone[el].toUpperCase().split("");
+          })
+          // Combine the elements from the previously returned arrays(line 39) in line 46 :
+          .reduce((a, b) => {
+            let output = [];
+            for (var i = 0; i < a.length; i++) {
+              for (var j = 0; j < b.length; j++) {
+                output.push(a[i] + b[j]);
+              }
+            }
+            document.getElementById("words").innerHTML = output;
+            return output;
+          })
+      );
     }
   }
 };
