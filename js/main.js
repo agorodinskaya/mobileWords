@@ -32,7 +32,7 @@ let phoneComb = {
             // console.log(this.phone[el].toUpperCase().split(""));
             return this.phone[el].toUpperCase().split("");
           })
-          // Combine the elements from returned arrays(line 39) in line 46 :
+          // Combine the elements from returned arrays(from line 39), result in line 46 :
           .reduce((a, b) => {
             let output = [];
             for (let i = 0; i < a.length; i++) {
